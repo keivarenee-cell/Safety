@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily Notes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<link rel="manifest" href="manifest.json">
+
+<body>
+  <h1>Daily Notes</h1>
+
+  <!-- Panic button: instantly clears screen -->
+  <button id="panic-btn">Clear Screen</button>
+
+<div id="password-screen">
+  <h2>Enter Password</h2>
+  <input type="password" id="password-input" placeholder="Password">
+  <button id="password-submit">Unlock</button>
+</div>
+
+  <form id="journal-form">
+    <label>
+      Date:
+      <input type="date" id="date" />
+    </label>
+
+    <label>
+      Mood (1-5):
+      <input type="number" id="mood" min="1" max="5" />
+    </label>
+
+    <label>
+      Note:
+      <textarea id="note"></textarea>
+    </label>
+
+    <button type="submit">Save</button>
+  </form>
+
+  <!-- Hidden incident section -->
+  <div id="incident-section" class="hidden">
+    <h2>Details</h2>
+    <label>
+      Incident type:
+      <select id="incident-type">
+        <option value="none">None</option>
+        <option value="physical">Physical</option>
+        <option value="emotional">Emotional</option>
+        <option value="financial">Financial</option>
+        <option value="digital">Digital</option>
+      </select>
+    </label>
+
+    <label>
+      Severity (1-5):
+      <input type="number" id="severity" min="1" max="5" />
+    </label>
+
+    <label>
+      Incident description:
+      <textarea id="incident-description"></textarea>
+    </label>
+  </div>
+
+  <h2>Previous entries</h2>
+  <ul id="entries-list"></ul>
+
+  <button id="export-btn">Download Export</button>
+  <button id="backup-btn">Send Backup</button>
+
+  <!-- Decoy toggle (secret click area) -->
+  <div id="footer-area">Daily Notes</div>
+
+  <script src="script.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
+</script>
+
+</body>
+</html>
